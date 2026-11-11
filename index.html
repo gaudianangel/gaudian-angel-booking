@@ -329,9 +329,9 @@ hr{border:0;border-top:1px solid #e4e9f0;margin:20px 0}
             <div class="field">
               <label for="schedulePeriod">PERIOD</label>
               <select id="schedulePeriod" required>
-                <option value="Morning">Morning</option>
-                <option value="Afternoon">Afternoon</option>
-                <option value="Evening">Evening</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
               </select>
             </div>
             <div class="field">
@@ -339,7 +339,7 @@ hr{border:0;border-top:1px solid #e4e9f0;margin:20px 0}
               <input id="scheduleFare" type="number" min="1" step="1" required>
             </div>
           </div>
-          <button style="margin-top:12px">SAVE DEPARTURE</button>
+          <button style="margin-top:12px" type="submit">SAVE DEPARTURE</button>
         </form>
         <hr>
         <h3>Existing buses</h3>
@@ -360,9 +360,6 @@ hr{border:0;border-top:1px solid #e4e9f0;margin:20px 0}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-/* Supabase project connection.
-   The publishable key is designed for browser use.
-   Never put a secret/service-role key here. */
 const SUPABASE_URL = "https://gfoqzfbczbkzszyxgmnc.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_YSl5sP5P1OHGLZHUbS98aQ_rupbUIh9";
 
@@ -372,12 +369,17 @@ const db = window.supabase.createClient(
 );
 
 const $ = id => document.getElementById(id);
-const today = new Date();
-const todayString = [
-  today.getFullYear(),
-  String(today.getMonth()+1).padStart(2,"0"),
-  String(today.getDate()).padStart(2,"0")
-].join("-");
+
+function getLocalDateString() {
+  const now = new Date();
+  return [
+    now.getFullYear(),
+    String(now.getMonth()+1).padStart(2,"0"),
+    String(now.getDate()).padStart(2,"0")
+  ].join("-");
+}
+
+const todayString = getLocalDateString();
 
 $("travelDate").min = todayString;
 $("travelDate").value = todayString;
@@ -635,8 +637,6 @@ $("passengerForm").addEventListener("submit",async event => {
   submitButton.textContent = "RESERVING...";
 
   try {
-    // The database function checks seat availability and creates
-    // the booking and temporary seat holds together.
     const {data,error} = await db.rpc("create_bus_booking",{
       p_schedule_id:selectedSchedule.id,
       p_seat_numbers:selectedSeats,
@@ -815,6 +815,7 @@ $("busForm").addEventListener("submit",async event=>{
   await loadBuses();
 });
 
+// SAVE DEPARTURE SCHEDULE
 $("scheduleForm").addEventListener("submit",async event=>{
   event.preventDefault();
   if(!isAdministrator) return;
@@ -823,7 +824,10 @@ $("scheduleForm").addEventListener("submit",async event=>{
   const busId = $("scheduleBus").value;
   const date = $("scheduleDate").value;
   const time = $("scheduleTime").value;
-  const period = $("schedulePeriod").value;
+
+  // Always normalize the period to lowercase before sending to Supabase.
+  const period = $("schedulePeriod").value.trim().toLowerCase();
+
   const fare = Number($("scheduleFare").value);
 
   if(!routeId || !busId || !date || !time || !fare || fare <= 0) {
@@ -831,25 +835,47 @@ $("scheduleForm").addEventListener("submit",async event=>{
     return;
   }
 
-  const {error} = await db.from("schedules").insert({
-    route_id:routeId,
-    bus_id:busId,
-    departure_date:date,
-    departure_time:time,
-    departure_period:period,
-    fare_kes:fare,
-    status:"scheduled"
-  });
-
-  if(error) {
-    message("adminMessage","Could not save schedule: " + error.message,"error");
+  const allowedPeriods = ["morning","afternoon","evening"];
+  if(!allowedPeriods.includes(period)) {
+    message("adminMessage","Please select Morning, Afternoon or Evening.","error");
     return;
   }
 
-  $("scheduleForm").reset();
-  $("scheduleDate").value = todayString;
-  message("adminMessage","Departure schedule saved successfully.","success");
-  await loadAdminSchedules();
+  if(date < getLocalDateString()) {
+    message("adminMessage","Departure date cannot be in the past.","error");
+    return;
+  }
+
+  const saveButton = $("scheduleForm").querySelector("button[type=submit]");
+  saveButton.disabled = true;
+  saveButton.textContent = "SAVING DEPARTURE...";
+
+  try {
+    const {error} = await db.from("schedules").insert({
+      route_id:routeId,
+      bus_id:busId,
+      departure_date:date,
+      departure_time:time,
+      departure_period:period,
+      fare_kes:fare,
+      status:"scheduled"
+    });
+
+    if(error) throw error;
+
+    $("scheduleForm").reset();
+    $("scheduleDate").value = getLocalDateString();
+    $("schedulePeriod").value = "morning";
+
+    message("adminMessage","Departure schedule saved successfully.","success");
+    await loadAdminSchedules();
+
+  } catch(error) {
+    message("adminMessage","Could not save schedule: " + error.message,"error");
+  } finally {
+    saveButton.disabled = false;
+    saveButton.textContent = "SAVE DEPARTURE";
+  }
 });
 
 async function loadAdminSchedules() {
