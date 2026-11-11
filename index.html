@@ -9,695 +9,898 @@
 <meta name="description" content="Book your journey with THE GAUDIAN ANGEL Express Bus Services across Kenya.">
 
 <style>
-:root{
- --navy:#102B50;
- --blue:#0752B5;
- --gold:#D5AA45;
- --white:#fff;
- --light:#f3f6fb;
- --dark:#172a43;
- --muted:#68778b;
+:root {
+  --navy:#102B50;
+  --blue:#0752B5;
+  --gold:#D5AA45;
+  --white:#fff;
+  --light:#f3f6fb;
+  --ink:#17243a;
+  --muted:#68758a;
+  --green:#087443;
+  --red:#b42318;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--dark)}
-header{background:var(--navy);color:white;padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.brand{font-weight:900;font-size:21px;color:var(--gold)}
-.brand small{display:block;color:white;font-size:10px;letter-spacing:3px;margin-top:5px}
-nav{display:flex;gap:17px;align-items:center;flex-wrap:wrap}
+body{margin:0;background:var(--light);color:var(--ink);font-family:Arial,sans-serif}
+header{background:var(--navy);color:white;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px #0002}
+.nav{max-width:1200px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.brand{font-size:20px;font-weight:900;letter-spacing:1px}
+.brand span{color:var(--gold)}
+nav{display:flex;gap:15px;flex-wrap:wrap}
 nav a{color:white;text-decoration:none;font-size:13px;font-weight:bold}
 nav a:hover{color:var(--gold)}
-.hero{background:linear-gradient(110deg,#102B50,#0752B5);color:white;padding:55px 5%;overflow:hidden}
-.hero-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:25px}
-.tag{color:var(--gold);font-weight:bold;letter-spacing:3px;font-size:13px}
-.hero h1{font-size:clamp(36px,5vw,60px);line-height:1.08;margin:16px 0}
-.hero h1 span{color:var(--gold)}
-.hero p{line-height:1.7;color:#e5edfa;max-width:550px}
-.hero-art{width:100%;max-width:620px}
-.btn{border:0;background:var(--gold);color:var(--navy);padding:14px 20px;border-radius:7px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block}
-.btn:hover{filter:brightness(.94)}
-.btn-blue{background:var(--navy);color:white}
-.btn-red{background:#a52c2c;color:white}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.section{max-width:1200px;margin:auto;padding:42px 5%}
-.section h2{text-align:center;color:var(--navy);font-size:29px}
-.subtitle{text-align:center;color:var(--muted);margin:0 0 28px;line-height:1.6}
-.panel{background:white;padding:25px;border-radius:13px;box-shadow:0 5px 25px #102b5015;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:15px}
-label{display:block;font-size:13px;font-weight:bold;color:var(--navy);margin-bottom:7px}
-input,select{width:100%;padding:13px;border:1px solid #d5deeb;border-radius:7px;font-size:15px;background:white;color:var(--dark)}
-input:focus,select:focus{outline:2px solid #9ab9e6;border-color:var(--blue)}
-.full{width:100%;margin-top:17px}
-.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.route{background:white;padding:20px;border-radius:11px;border-bottom:4px solid var(--gold);box-shadow:0 3px 14px #102b5010}
-.route h3{color:var(--navy);margin:10px 0 7px}
-.route p{font-size:13px;color:var(--muted);line-height:1.5}
-.route-icon{font-size:28px}
-.hidden{display:none!important}
-.trip{border:1px solid #dce3ee;border-radius:10px;padding:17px;margin:12px 0;background:white}
-.trip-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.hero{background:linear-gradient(120deg,#102B50,#0752B5);color:white;padding:42px 18px}
+.hero-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:25px}
+.hero h1{font-size:clamp(30px,5vw,48px);margin:0 0 12px}
+.hero p{line-height:1.7;color:#e5edfa}
+.gold{color:var(--gold)}
+.bus-art{width:100%;max-width:440px;margin:auto}
+.container{max-width:1200px;margin:auto;padding:25px 18px}
+.section-title{color:var(--navy);margin:0 0 16px;font-size:25px}
+.card{background:white;border-radius:13px;padding:20px;box-shadow:0 4px 18px #102b5010;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}
+label{font-size:13px;font-weight:bold;color:var(--navy)}
+input,select{width:100%;padding:12px;border:1px solid #d7deea;border-radius:8px;background:white;font-size:15px;min-width:0}
+button{border:0;border-radius:8px;padding:12px 17px;background:var(--blue);color:white;font-weight:bold;cursor:pointer}
+button:hover{filter:brightness(1.08)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.btn-gold{background:var(--gold);color:#18243a}
+.btn-dark{background:var(--navy)}
+.btn-red{background:var(--red)}
+.btn-light{background:#eaf0f8;color:var(--navy)}
+.full{width:100%}
+.note{font-size:13px;color:var(--muted);line-height:1.6}
+.status{padding:12px;border-radius:8px;background:#edf4ff;color:var(--navy);margin:12px 0;font-size:14px}
+.error{background:#fff0ee;color:#9d2018}
+.success{background:#eaf8ef;color:#086437}
+.trip{border:1px solid #e0e6ef;border-radius:11px;padding:16px;margin:12px 0}
+.trip-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .trip strong{color:var(--navy)}
-.small{font-size:12px;color:var(--muted);line-height:1.6}
-.notice{padding:14px;background:#fff5dc;border-left:4px solid var(--gold);border-radius:6px;font-size:13px;line-height:1.6;margin:15px 0}
-.success{padding:14px;background:#e8f7ed;color:#176b37;border-radius:7px;line-height:1.5}
-.seat-layout{max-width:440px;margin:20px auto;padding:20px;background:#edf2f8;border-radius:14px}
-.driver{text-align:center;background:var(--navy);color:white;padding:11px;border-radius:8px;margin-bottom:17px}
-.seats{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
-.seat{padding:12px 3px;border:1px solid #aebbd0;background:white;color:var(--navy);border-radius:6px;font-weight:bold;cursor:pointer}
-.seat.selected{background:var(--gold);border-color:var(--gold)}
-.seat.taken{background:#c8ced8;color:#68778b;cursor:not-allowed}
-.seat-legend{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;font-size:12px;margin-top:15px}
-.dot{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:middle}
-.summary{background:#f3f6fb;padding:15px;border-radius:8px;margin:15px 0;line-height:1.8}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px}
-.step{background:white;padding:22px;border-radius:10px;text-align:center}
-.step strong{font-size:27px;color:var(--gold)}
-footer{background:var(--navy);color:white;text-align:center;padding:35px 15px;margin-top:35px}
-footer strong{color:var(--gold)}
-footer p{font-size:13px;color:#d6e0ef}
+.trip-meta{display:flex;gap:15px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:12px 0}
+.seat-grid{display:grid;grid-template-columns:repeat(5,minmax(40px,1fr));gap:9px;max-width:390px;margin:16px auto}
+.seat{padding:12px 4px;background:#e8edf5;color:var(--navy);border:1px solid #d2dbea}
+.seat.selected{background:var(--gold);color:#17243a}
+.seat.taken{background:#d6d9df;color:#858b96;cursor:not-allowed;text-decoration:line-through}
+.seat-legend{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;font-size:12px}
+.legend-box{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:middle;margin-right:5px}
+.booking-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.route{background:white;padding:15px;border-radius:10px;border-left:4px solid var(--gold)}
+.route strong{color:var(--navy)}
+.hidden{display:none!important}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.admin-tabs button{padding:9px 13px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+td,th{padding:10px;border-bottom:1px solid #e5e9f0;text-align:left}
+th{background:#f1f4f9;color:var(--navy)}
 .table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:13px;min-width:550px}
-th,td{text-align:left;padding:11px;border-bottom:1px solid #e3e8f0}
-th{background:#edf2f8;color:var(--navy)}
-.ticket{border:2px dashed var(--gold);padding:22px;border-radius:12px;max-width:620px;margin:20px auto;background:white}
-.ticket h2{text-align:left}
-.admin-title{color:var(--navy)}
-@media(max-width:700px){
- header{justify-content:center}
- nav{justify-content:center}
+footer{background:var(--navy);color:white;text-align:center;padding:25px 15px;margin-top:25px}
+footer p{color:#dbe4f1;font-size:13px}
+.small{font-size:12px;color:var(--muted)}
+hr{border:0;border-top:1px solid #e4e9f0;margin:20px 0}
+@media(max-width:750px){
  .hero-inner{grid-template-columns:1fr}
- .hero-art{max-width:100%}
- .section{padding:30px 4%}
- .panel{padding:17px}
+ .bus-art{max-width:310px}
+ .grid,.route-grid{grid-template-columns:1fr 1fr}
+ .booking-layout{grid-template-columns:1fr}
+ nav{gap:10px}
 }
-@media print{
- header,footer,.no-print{display:none!important}
- body{background:white}
- .ticket{border:2px solid #333}
+@media(max-width:480px){
+ .grid,.route-grid{grid-template-columns:1fr}
+ .brand{font-size:17px}
+ .card{padding:15px}
 }
 </style>
 </head>
 
 <body>
-
 <header>
- <div class="brand">
-  THE GAUDIAN ANGEL
-  <small>EXPRESS BUS SERVICES</small>
- </div>
- <nav>
-  <a href="#home">HOME</a>
-  <a href="#booking">BOOK TICKET</a>
-  <a href="#routes">ROUTES</a>
-  <a href="#how">HOW IT WORKS</a>
-  <a href="#contact">CONTACT</a>
-  <a href="#admin" onclick="openAdmin()">ADMIN</a>
- </nav>
+  <div class="nav">
+    <div class="brand">THE <span>GAUDIAN ANGEL</span></div>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#book">BOOK TICKET</a>
+      <a href="#routes">ROUTES</a>
+      <a href="#how">HOW IT WORKS</a>
+      <a href="#contact">CONTACT</a>
+      <a href="#admin">ADMIN</a>
+    </nav>
+  </div>
 </header>
 
-<!-- HOME -->
 <section class="hero" id="home">
- <div class="hero-inner">
-  <div>
-   <div class="tag">TRAVEL WITH CONFIDENCE</div>
-   <h1>Your Journey,<br><span>Our Priority.</span></h1>
-   <p>Experience comfortable, reliable and convenient bus travel across Kenya with THE GAUDIAN ANGEL. Book your journey and travel with confidence.</p>
-   <a href="#booking" class="btn">BOOK YOUR TICKET →</a>
+  <div class="hero-inner">
+    <div>
+      <p class="gold"><b>TRAVEL WITH CONFIDENCE</b></p>
+      <h1>Your journey.<br><span class="gold">Our commitment.</span></h1>
+      <p>Book your seat with THE GAUDIAN ANGEL Express Bus Services. Travel comfortably across Kenya with a simple online booking experience.</p>
+      <a href="#book"><button class="btn-gold">BOOK YOUR JOURNEY</button></a>
+    </div>
+    <div class="bus-art">
+      <svg viewBox="0 0 520 250" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="260" cy="218" rx="225" ry="15" fill="#071b35" opacity=".4"/>
+        <path d="M38 65 Q38 35 72 35 H416 Q464 35 478 83 L493 165 Q496 188 472 190 H45 Q25 190 27 166 Z" fill="#fff"/>
+        <path d="M38 65 Q38 35 72 35 H416 Q464 35 478 83 L493 165 H28 Z" fill="#f8fafc"/>
+        <path d="M38 65 Q38 35 72 35 H416 Q464 35 478 83 L493 165 H28 Z" fill="none" stroke="#d5aa45" stroke-width="3"/>
+        <path d="M38 65 Q38 35 72 35 H416 Q464 35 478 83 L493 165 H28 Z" fill="#0752b5" opacity=".96"/>
+        <path d="M35 115 H487 L493 165 H28 Z" fill="#fff"/>
+        <path d="M35 142 Q200 120 335 151 Q420 171 493 145 L493 165 H28 Z" fill="#d5aa45"/>
+        <g fill="#13243c">
+          <rect x="66" y="48" width="70" height="51" rx="7"/>
+          <rect x="145" y="48" width="70" height="51" rx="7"/>
+          <rect x="224" y="48" width="70" height="51" rx="7"/>
+          <rect x="303" y="48" width="70" height="51" rx="7"/>
+          <rect x="382" y="48" width="65" height="51" rx="7"/>
+        </g>
+        <text x="260" y="132" font-size="18" font-weight="900" text-anchor="middle" fill="#102b50">THE GAUDIAN ANGEL</text>
+        <text x="260" y="151" font-size="9" font-weight="bold" text-anchor="middle" fill="#102b50">TRAVEL WITH CONFIDENCE</text>
+        <circle cx="112" cy="190" r="27" fill="#17243a"/>
+        <circle cx="112" cy="190" r="12" fill="#aeb8c6"/>
+        <circle cx="402" cy="190" r="27" fill="#17243a"/>
+        <circle cx="402" cy="190" r="12" fill="#aeb8c6"/>
+        <rect x="29" y="155" width="13" height="17" rx="3" fill="#d5aa45"/>
+        <rect x="477" y="155" width="13" height="17" rx="3" fill="#d5aa45"/>
+      </svg>
+    </div>
   </div>
-
-  <svg class="hero-art" viewBox="0 0 650 310" role="img" aria-label="White and blue THE GAUDIAN ANGEL coach">
-   <defs>
-    <linearGradient id="coachBody" x2="0" y2="1">
-     <stop stop-color="#fff"/><stop offset="1" stop-color="#cbd7e8"/>
-    </linearGradient>
-   </defs>
-   <ellipse cx="335" cy="278" rx="285" ry="16" fill="#061a36" opacity=".5"/>
-   <path d="M35 90 Q45 50 100 50 L490 50 Q555 50 600 110 L630 205 L630 250 L25 250 L25 145Z" fill="url(#coachBody)" stroke="#d4aa45" stroke-width="4"/>
-   <path d="M47 91 Q57 66 105 66 L493 66 Q539 66 578 115 L594 147 L40 147Z" fill="#102b50"/>
-   <g fill="#173d70">
-    <path d="M60 78 L150 78 L150 137 L49 137Z"/>
-    <path d="M160 78 L245 78 L245 137 L160 137Z"/>
-    <path d="M255 78 L340 78 L340 137 L255 137Z"/>
-    <path d="M350 78 L435 78 L435 137 L350 137Z"/>
-    <path d="M445 78 L510 80 L565 137 L445 137Z"/>
-   </g>
-   <path d="M28 181 Q230 214 430 181 Q540 160 620 184 L630 211 Q440 193 300 227 Q150 249 25 215Z" fill="#0752b5"/>
-   <path d="M28 215 Q230 248 430 215 Q540 194 630 215 L630 231 Q400 224 260 253 L25 237Z" fill="#d5aa45"/>
-   <path d="M28 235 Q210 264 380 235 L630 231 L630 250 L25 250Z" fill="#102b50"/>
-   <g fill="#172033" stroke="#9eabc0" stroke-width="5">
-    <circle cx="155" cy="248" r="29"/><circle cx="520" cy="248" r="29"/>
-   </g>
-   <g fill="#cbd5e1"><circle cx="155" cy="248" r="12"/><circle cx="520" cy="248" r="12"/></g>
-   <text x="290" y="177" fill="#102b50" font-size="19" font-weight="bold" text-anchor="middle">THE GAUDIAN ANGEL</text>
-   <text x="320" y="194" fill="#102b50" font-size="9" font-weight="bold" text-anchor="middle">TRAVEL WITH CONFIDENCE</text>
-  </svg>
- </div>
 </section>
 
-<!-- BOOKING SEARCH -->
-<section class="section" id="booking">
- <h2>Book Your Journey</h2>
- <p class="subtitle">Search for your route, date and preferred departure.</p>
-
- <div class="panel">
-  <form id="searchForm">
-   <div class="grid">
-    <div>
-     <label>FROM</label>
-     <select id="from" required>
-      <option value="">Departure town</option>
-      <option>Nairobi</option>
-      <option>Mombasa</option>
-     </select>
+<main class="container">
+  <section id="book">
+    <h2 class="section-title">Book your ticket</h2>
+    <div class="card">
+      <form id="searchForm">
+        <div class="grid">
+          <div class="field">
+            <label for="origin">FROM</label>
+            <select id="origin" required>
+              <option value="">Select origin</option>
+              <option>Nairobi</option>
+              <option>Mombasa</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="destination">TO</label>
+            <select id="destination" required>
+              <option value="">Select destination</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="travelDate">TRAVEL DATE</label>
+            <input id="travelDate" type="date" required>
+          </div>
+        </div>
+        <div style="margin-top:16px;max-width:240px" class="field">
+          <label for="passengerCount">PASSENGERS</label>
+          <select id="passengerCount">
+            <option value="1">1 passenger</option>
+            <option value="2">2 passengers</option>
+            <option value="3">3 passengers</option>
+            <option value="4">4 passengers</option>
+            <option value="5">5 passengers</option>
+          </select>
+        </div>
+        <button class="full" style="margin-top:18px" type="submit">SEARCH BUSES</button>
+      </form>
+      <div id="searchMessage" aria-live="polite"></div>
     </div>
-    <div>
-     <label>TO</label>
-     <select id="to" required>
-      <option value="">Destination</option>
-      <option>Kisii</option>
-      <option>Nyamira</option>
-      <option>Keroka</option>
-      <option>Migori</option>
-      <option>Homa Bay</option>
-      <option>Port Victoria</option>
-      <option>Mombasa</option>
-      <option>Nakuru</option>
-      <option>Kisumu</option>
-     </select>
+    <div id="tripResults"></div>
+  </section>
+
+  <section id="seatSection" class="hidden">
+    <h2 class="section-title">Choose your seats</h2>
+    <div class="card">
+      <div id="selectedTripInfo"></div>
+      <div class="seat-legend">
+        <span><i class="legend-box" style="background:#e8edf5"></i>Available</span>
+        <span><i class="legend-box" style="background:#d5aa45"></i>Selected</span>
+        <span><i class="legend-box" style="background:#d6d9df"></i>Unavailable</span>
+      </div>
+      <div id="seatGrid" class="seat-grid"></div>
+      <p id="seatSummary" class="status">Select your seats.</p>
+      <button id="continueBooking" class="full" disabled>CONTINUE TO PASSENGER DETAILS</button>
     </div>
-    <div>
-     <label>TRAVEL DATE</label>
-     <input type="date" id="travelDate" required>
+  </section>
+
+  <section id="passengerSection" class="hidden">
+    <h2 class="section-title">Passenger details</h2>
+    <div class="card">
+      <form id="passengerForm">
+        <div class="grid">
+          <div class="field">
+            <label for="passengerName">FULL NAME</label>
+            <input id="passengerName" required maxlength="100" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="passengerPhone">PHONE NUMBER</label>
+            <input id="passengerPhone" required maxlength="20" placeholder="e.g. 07XXXXXXXX" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="passengerEmail">EMAIL (OPTIONAL)</label>
+            <input id="passengerEmail" type="email" maxlength="150" autocomplete="email">
+          </div>
+        </div>
+        <div id="fareSummary" class="status"></div>
+        <button class="full" type="submit">RESERVE SEATS</button>
+      </form>
+      <p class="note">Your selected seats will be held for 15 minutes after a successful reservation. Payment is not yet connected. Do not travel using an unpaid reservation.</p>
     </div>
-    <div>
-     <label>PASSENGERS</label>
-     <select id="passengers">
-      <option value="1">1 Passenger</option>
-      <option value="2">2 Passengers</option>
-      <option value="3">3 Passengers</option>
-      <option value="4">4 Passengers</option>
-      <option value="5">5 Passengers</option>
-     </select>
+    <div id="bookingResult"></div>
+  </section>
+
+  <section id="routes">
+    <h2 class="section-title">Our routes</h2>
+    <div class="route-grid" id="routeCards">
+      <div class="route"><strong>Nairobi – Kisii</strong></div>
+      <div class="route"><strong>Nairobi – Nyamira</strong></div>
+      <div class="route"><strong>Nairobi – Keroka</strong></div>
+      <div class="route"><strong>Nairobi – Migori</strong></div>
+      <div class="route"><strong>Nairobi – Homa Bay</strong></div>
+      <div class="route"><strong>Nairobi – Port Victoria</strong></div>
+      <div class="route"><strong>Nairobi – Mombasa</strong></div>
+      <div class="route"><strong>Mombasa – Nakuru</strong></div>
+      <div class="route"><strong>Mombasa – Kisumu</strong></div>
     </div>
-   </div>
-   <button type="submit" class="btn full">SEARCH AVAILABLE BUSES</button>
-  </form>
-  <p id="searchMessage" class="small" role="status"></p>
- </div>
+  </section>
 
- <div id="tripResults" class="hidden">
-  <h2>Available Departures</h2>
-  <div id="tripList"></div>
- </div>
-</section>
-
-<!-- SEAT SELECTION -->
-<section class="section hidden" id="seatSection">
- <div class="panel">
-  <h2>Select Your Seats</h2>
-  <p class="subtitle">Choose your seats from the 49-seat coach layout.</p>
-
-  <div class="seat-layout">
-   <div class="driver">DRIVER</div>
-   <div class="seats" id="seatMap"></div>
-   <div class="seat-legend">
-    <span><i class="dot" style="background:white;border:1px solid #aaa"></i>Available</span>
-    <span><i class="dot" style="background:#d5aa45"></i>Selected</span>
-    <span><i class="dot" style="background:#c8ced8"></i>Booked in this browser</span>
-   </div>
-  </div>
-
-  <div class="summary" id="seatSummary"></div>
-
-  <h2>Passenger Details</h2>
-  <form id="passengerForm">
-   <div class="grid">
-    <div>
-     <label>FULL NAME</label>
-     <input id="passengerName" required placeholder="Passenger full name">
+  <section id="how" style="margin-top:30px">
+    <h2 class="section-title">How it works</h2>
+    <div class="card">
+      <p><b>1.</b> Select your route and travel date.</p>
+      <p><b>2.</b> Choose an available departure and your preferred seats.</p>
+      <p><b>3.</b> Enter passenger details and reserve your seats.</p>
+      <p><b>4.</b> Complete payment when M-Pesa payment is activated and receive your valid ticket.</p>
     </div>
-    <div>
-     <label>PHONE NUMBER</label>
-     <input id="passengerPhone" type="tel" required placeholder="07XXXXXXXX">
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="card">
+      <p><b>THE GAUDIAN ANGEL EXPRESS BUS SERVICES</b></p>
+      <p class="note">For booking assistance, please contact the company through its official customer service channels.</p>
     </div>
-    <div>
-     <label>EMAIL ADDRESS (OPTIONAL)</label>
-     <input id="passengerEmail" type="email" placeholder="Email address">
+  </section>
+
+  <section id="admin">
+    <h2 class="section-title">Administrator</h2>
+    <div class="card">
+      <div id="adminLogin">
+        <p class="note">Administrator sign-in. Use the administrator account created in Supabase Authentication.</p>
+        <form id="loginForm">
+          <div class="field">
+            <label for="adminEmail">EMAIL</label>
+            <input id="adminEmail" type="email" required value="kokokenya23@gmail.com" autocomplete="username">
+          </div>
+          <div class="field" style="margin-top:12px">
+            <label for="adminPassword">PASSWORD</label>
+            <input id="adminPassword" type="password" required autocomplete="current-password">
+          </div>
+          <button class="full" style="margin-top:15px">SIGN IN</button>
+        </form>
+        <div id="loginMessage" aria-live="polite"></div>
+      </div>
+
+      <div id="adminDashboard" class="hidden">
+        <div class="trip-head">
+          <div><b>Administrator dashboard</b><p class="small" id="adminIdentity"></p></div>
+          <button id="logoutButton" class="btn-red" type="button">SIGN OUT</button>
+        </div>
+        <div id="adminMessage" aria-live="polite"></div>
+        <hr>
+        <h3>Add a bus</h3>
+        <form id="busForm">
+          <div class="grid">
+            <div class="field">
+              <label for="busName">BUS NAME</label>
+              <input id="busName" required maxlength="80" placeholder="e.g. Gaudian Angel 01">
+            </div>
+            <div class="field">
+              <label for="busRegistration">REGISTRATION NUMBER</label>
+              <input id="busRegistration" required maxlength="30" placeholder="e.g. KDH 480N">
+            </div>
+            <div class="field">
+              <label>SEAT CAPACITY</label>
+              <input value="49 seats" disabled>
+            </div>
+          </div>
+          <button style="margin-top:12px">ADD BUS</button>
+        </form>
+        <hr>
+        <h3>Add a departure schedule</h3>
+        <form id="scheduleForm">
+          <div class="grid">
+            <div class="field">
+              <label for="scheduleRoute">ROUTE</label>
+              <select id="scheduleRoute" required></select>
+            </div>
+            <div class="field">
+              <label for="scheduleBus">BUS</label>
+              <select id="scheduleBus" required></select>
+            </div>
+            <div class="field">
+              <label for="scheduleDate">DEPARTURE DATE</label>
+              <input id="scheduleDate" type="date" required>
+            </div>
+            <div class="field">
+              <label for="scheduleTime">DEPARTURE TIME</label>
+              <input id="scheduleTime" type="time" required>
+            </div>
+            <div class="field">
+              <label for="schedulePeriod">PERIOD</label>
+              <select id="schedulePeriod" required>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="scheduleFare">FARE (KES PER SEAT)</label>
+              <input id="scheduleFare" type="number" min="1" step="1" required>
+            </div>
+          </div>
+          <button style="margin-top:12px">SAVE DEPARTURE</button>
+        </form>
+        <hr>
+        <h3>Existing buses</h3>
+        <div id="adminBuses" class="table-wrap"></div>
+        <hr>
+        <h3>Upcoming schedules</h3>
+        <div id="adminSchedules" class="table-wrap"></div>
+      </div>
     </div>
-   </div>
-   <button type="submit" class="btn full">CONTINUE TO PAYMENT</button>
-  </form>
+  </section>
+</main>
 
-  <div id="paymentArea" class="hidden">
-   <div class="notice">
-    <strong>M-PESA PAYMENT NOT YET CONNECTED</strong><br>
-    Your booking can be prepared, but real payment requests cannot be made until the secure Safaricom Daraja backend is installed. Do not send money using this demonstration.
-   </div>
-   <div class="summary" id="paymentSummary"></div>
-   <button class="btn full" type="button" onclick="createDemoBooking()">CREATE DEMONSTRATION BOOKING</button>
-   <p class="small">This creates an unpaid demonstration record only. It is not a confirmed reservation or a valid travel ticket.</p>
-  </div>
- </div>
-</section>
-
-<!-- BOOKING SLIP -->
-<section class="section hidden" id="ticketSection">
- <div class="panel">
-  <div id="ticketOutput"></div>
-  <div class="no-print">
-   <button class="btn" onclick="window.print()">PRINT / SAVE AS PDF</button>
-  </div>
- </div>
-</section>
-
-<!-- ROUTES -->
-<section class="section" id="routes">
- <h2>Our Destinations</h2>
- <p class="subtitle">Choose your destination from our approved routes.</p>
- <div class="routes" id="routeCards"></div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section" id="how">
- <h2>How Booking Works</h2>
- <p class="subtitle">Four simple steps to your next journey.</p>
- <div class="steps">
-  <div class="step"><strong>01</strong><h3>Search</h3><p>Choose your route and travel date.</p></div>
-  <div class="step"><strong>02</strong><h3>Select Seat</h3><p>Choose your preferred seat.</p></div>
-  <div class="step"><strong>03</strong><h3>Pay</h3><p>Pay through M-Pesa after the payment system is activated.</p></div>
-  <div class="step"><strong>04</strong><h3>Get Ticket</h3><p>Receive your valid electronic ticket after payment confirmation.</p></div>
- </div>
-</section>
-
-<!-- ADMIN DASHBOARD -->
-<section class="section hidden" id="admin">
- <div class="panel">
-  <h2 class="admin-title">Administration Dashboard</h2>
-
-  <div class="notice">
-   <strong>DEVELOPMENT DASHBOARD</strong><br>
-   This demonstration dashboard is not protected by a secure admin login. Its data is stored only in the browser where it is entered. Do not use it to manage real customer payments or reservations.
-  </div>
-
-  <h3>Add a Departure / Set a Fare</h3>
-  <form id="scheduleForm">
-   <div class="grid">
-    <div>
-     <label>FROM</label>
-     <select id="adminFrom"><option>Nairobi</option><option>Mombasa</option></select>
-    </div>
-    <div>
-     <label>TO</label>
-     <select id="adminTo">
-      <option>Kisii</option><option>Nyamira</option><option>Keroka</option>
-      <option>Migori</option><option>Homa Bay</option><option>Port Victoria</option>
-      <option>Mombasa</option><option>Nakuru</option><option>Kisumu</option>
-     </select>
-    </div>
-    <div>
-     <label>TRAVEL DATE</label>
-     <input type="date" id="adminDate" required>
-    </div>
-    <div>
-     <label>DEPARTURE TIME</label>
-     <input type="time" id="adminTime" required>
-    </div>
-    <div>
-     <label>FARE PER PASSENGER (KSH)</label>
-     <input type="number" id="adminFare" min="1" required placeholder="Enter fare">
-    </div>
-    <div>
-     <label>BUS REFERENCE</label>
-     <input id="adminBus" required placeholder="e.g. GA-001">
-    </div>
-   </div>
-   <button class="btn full" type="submit">SAVE DEPARTURE</button>
-  </form>
-
-  <h3>Manage Departure Schedules</h3>
-  <div class="table-wrap">
-   <table>
-    <thead><tr><th>Route</th><th>Date</th><th>Time</th><th>Fare</th><th>Bus</th><th>Action</th></tr></thead>
-    <tbody id="adminSchedules"></tbody>
-   </table>
-  </div>
-
-  <h3>Booking Records</h3>
-  <div class="table-wrap">
-   <table>
-    <thead><tr><th>Reference</th><th>Passenger</th><th>Route</th><th>Seats</th><th>Payment status</th></tr></thead>
-    <tbody id="adminBookings"></tbody>
-   </table>
-  </div>
-
-  <button class="btn btn-red full" type="button" onclick="clearDemoData()">CLEAR ALL DEMONSTRATION DATA</button>
- </div>
-</section>
-
-<footer id="contact">
- <strong>THE GAUDIAN ANGEL EXPRESS BUS SERVICES</strong>
- <p>TRAVEL WITH CONFIDENCE</p>
- <p>Reliable Bus Transport Across Kenya</p>
- <p>Contact information will be added when confirmed.</p>
- <p>© 2026 THE GAUDIAN ANGEL. All Rights Reserved.</p>
+<footer>
+  <div class="brand">THE <span>GAUDIAN ANGEL</span></div>
+  <p>TRAVEL WITH CONFIDENCE</p>
+  <p>© <span id="year"></span> THE GAUDIAN ANGEL Express Bus Services. All rights reserved.</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const ROUTES=[
- ["Nairobi","Kisii"],
- ["Nairobi","Nyamira"],
- ["Nairobi","Keroka"],
- ["Nairobi","Migori"],
- ["Nairobi","Homa Bay"],
- ["Nairobi","Port Victoria"],
- ["Nairobi","Mombasa"],
- ["Mombasa","Nakuru"],
- ["Mombasa","Kisumu"]
-];
+/* Supabase project connection.
+   The publishable key is designed for browser use.
+   Never put a secret/service-role key here. */
+const SUPABASE_URL = "https://gfoqzfbczbkzszyxgmnc.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_YSl5sP5P1OHGLZHUbS98aQ_rupbUIh9";
 
-const $=id=>document.getElementById(id);
-const read=key=>JSON.parse(localStorage.getItem(key)||"[]");
-const save=(key,data)=>localStorage.setItem(key,JSON.stringify(data));
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 
-let selectedTrip=null;
-let selectedSeats=[];
-let passengerCount=1;
+const $ = id => document.getElementById(id);
+const today = new Date();
+const todayString = [
+  today.getFullYear(),
+  String(today.getMonth()+1).padStart(2,"0"),
+  String(today.getDate()).padStart(2,"0")
+].join("-");
 
-function safe(value){
- return String(value).replace(/[&<>"']/g,char=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[char]));
+$("travelDate").min = todayString;
+$("travelDate").value = todayString;
+$("scheduleDate").min = todayString;
+$("scheduleDate").value = todayString;
+$("year").textContent = new Date().getFullYear();
+
+let routes = [];
+let buses = [];
+let currentSchedules = [];
+let selectedSchedule = null;
+let selectedSeats = [];
+let unavailableSeats = [];
+let requiredPassengers = 1;
+let currentUser = null;
+let isAdministrator = false;
+
+function message(target, text, type="status") {
+  const el = $(target);
+  el.className = type;
+  el.textContent = text;
 }
 
-function makeId(){
- return "GA-"+Date.now()+"-"+Math.floor(Math.random()*1000);
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[char]);
 }
 
-function renderRoutes(){
- $("routeCards").innerHTML=ROUTES.map(route=>`
-  <div class="route">
-   <div class="route-icon">🚌</div>
-   <h3>${route[0]} – ${route[1]}</h3>
-   <p>THE GAUDIAN ANGEL express bus service.</p>
-   <button class="btn btn-blue" onclick="chooseRoute('${route[0]}','${route[1]}')">BOOK THIS ROUTE</button>
-  </div>
- `).join("");
+function money(value) {
+  return "KES " + Number(value || 0).toLocaleString("en-KE");
 }
 
-function chooseRoute(from,to){
- $("from").value=from;
- $("to").value=to;
- $("booking").scrollIntoView({behavior:"smooth"});
+function displayTime(value) {
+  if (!value) return "";
+  return String(value).slice(0,5);
 }
 
-const today=new Date();
-const localDate=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10);
-$("travelDate").min=localDate;
-$("adminDate").min=localDate;
+function hideBookingSections() {
+  $("seatSection").classList.add("hidden");
+  $("passengerSection").classList.add("hidden");
+}
 
-$("searchForm").addEventListener("submit",function(event){
- event.preventDefault();
+async function loadRoutes() {
+  const {data,error} = await db
+    .from("routes")
+    .select("id,origin,destination,is_active")
+    .eq("is_active",true)
+    .order("origin")
+    .order("destination");
 
- const from=$("from").value;
- const to=$("to").value;
- const date=$("travelDate").value;
+  if (error) throw error;
+  routes = data || [];
 
- if(!ROUTES.some(route=>route[0]===from&&route[1]===to)){
-  $("searchMessage").textContent="Please select one of our approved routes.";
-  $("tripResults").classList.add("hidden");
-  return;
- }
+  $("destination").innerHTML = '<option value="">Select destination</option>';
+  $("scheduleRoute").innerHTML = '<option value="">Select route</option>';
 
- const trips=read("ga_trips").filter(trip=>
-  trip.from===from&&trip.to===to&&trip.date===date
- );
+  routes.forEach(route => {
+    const destinationOption = document.createElement("option");
+    destinationOption.value = route.destination;
+    destinationOption.textContent = route.destination;
+    $("destination").appendChild(destinationOption);
 
- $("tripResults").classList.remove("hidden");
- $("seatSection").classList.add("hidden");
+    const scheduleOption = document.createElement("option");
+    scheduleOption.value = route.id;
+    scheduleOption.textContent = route.origin + " – " + route.destination;
+    $("scheduleRoute").appendChild(scheduleOption);
+  });
 
- if(!trips.length){
-  $("searchMessage").textContent="No departures have been added for this route and date. Please check again later.";
-  $("tripList").innerHTML="";
-  return;
- }
-
- $("searchMessage").textContent="Select your preferred departure below.";
-
- $("tripList").innerHTML=trips.map(trip=>`
-  <div class="trip">
-   <div class="trip-top">
-    <div>
-     <strong>${safe(trip.from)} → ${safe(trip.to)}</strong>
-     <p class="small">${safe(trip.date)} · ${safe(trip.time)} · Bus ${safe(trip.bus)}</p>
+  $("routeCards").innerHTML = routes.map(route => `
+    <div class="route">
+      <strong>${escapeHtml(route.origin)} – ${escapeHtml(route.destination)}</strong>
     </div>
-    <div>
-     <strong>KSh ${Number(trip.fare).toLocaleString()}</strong>
-     <p class="small">Per passenger</p>
-    </div>
-   </div>
-   <button class="btn full" onclick="selectTrip('${trip.id}')">SELECT THIS DEPARTURE</button>
-  </div>
- `).join("");
- $("tripResults").scrollIntoView({behavior:"smooth"});
+  `).join("");
+}
+
+$("origin").addEventListener("change", () => {
+  const origin = $("origin").value;
+  $("destination").innerHTML = '<option value="">Select destination</option>';
+  routes.filter(route => route.origin === origin).forEach(route => {
+    const option = document.createElement("option");
+    option.value = route.destination;
+    option.textContent = route.destination;
+    $("destination").appendChild(option);
+  });
 });
 
-function bookedSeats(){
- if(!selectedTrip)return [];
- return read("ga_bookings")
-  .filter(booking=>booking.tripId===selectedTrip.id)
-  .flatMap(booking=>booking.seats);
+async function searchSchedules(event) {
+  event.preventDefault();
+  hideBookingSections();
+  $("tripResults").innerHTML = "";
+  message("searchMessage","Searching available departures...");
+
+  const origin = $("origin").value;
+  const destination = $("destination").value;
+  const date = $("travelDate").value;
+  requiredPassengers = Number($("passengerCount").value);
+
+  if (!origin || !destination || !date) {
+    message("searchMessage","Please select your route and travel date.","error");
+    return;
+  }
+
+  const route = routes.find(r => r.origin === origin && r.destination === destination);
+  if (!route) {
+    message("searchMessage","That route is not currently available.","error");
+    return;
+  }
+
+  const {data,error} = await db
+    .from("schedules")
+    .select(`
+      id,departure_date,departure_time,departure_period,fare_kes,status,
+      buses(id,bus_name,registration_number,seat_capacity),
+      routes(id,origin,destination)
+    `)
+    .eq("route_id",route.id)
+    .eq("departure_date",date)
+    .eq("status","scheduled")
+    .order("departure_time");
+
+  if (error) {
+    message("searchMessage","Could not load departures: " + error.message,"error");
+    return;
+  }
+
+  currentSchedules = data || [];
+  if (!currentSchedules.length) {
+    message("searchMessage","No departures are currently listed for this route and date. Please check another date.","status");
+    return;
+  }
+
+  message("searchMessage",currentSchedules.length + " departure(s) found.","success");
+
+  $("tripResults").innerHTML = currentSchedules.map((trip,index) => `
+    <div class="trip">
+      <div class="trip-head">
+        <div>
+          <strong>${escapeHtml(trip.routes?.origin)} → ${escapeHtml(trip.routes?.destination)}</strong>
+          <div class="small">${escapeHtml(trip.buses?.bus_name || "Bus")}</div>
+        </div>
+        <strong>${money(trip.fare_kes)} / seat</strong>
+      </div>
+      <div class="trip-meta">
+        <span>📅 ${escapeHtml(trip.departure_date)}</span>
+        <span>🕒 ${escapeHtml(displayTime(trip.departure_time))}</span>
+        <span>${escapeHtml(trip.departure_period || "")}</span>
+        <span>${escapeHtml(trip.buses?.registration_number || "")}</span>
+      </div>
+      <button type="button" onclick="chooseTrip(${index})">SELECT THIS BUS</button>
+    </div>
+  `).join("");
 }
 
-function selectTrip(id){
- selectedTrip=read("ga_trips").find(trip=>trip.id===id);
- if(!selectedTrip)return;
+$("searchForm").addEventListener("submit",searchSchedules);
 
- selectedSeats=[];
- passengerCount=Number($("passengers").value);
-
- $("paymentArea").classList.add("hidden");
- $("passengerForm").classList.remove("hidden");
- $("seatSection").classList.remove("hidden");
-
- renderSeats();
- $("seatSection").scrollIntoView({behavior:"smooth"});
-}
-
-function renderSeats(){
- const taken=bookedSeats();
-
- $("seatMap").innerHTML=Array.from({length:49},(_,index)=>{
-  const number=index+1;
-  const isTaken=taken.includes(number);
-  const isSelected=selectedSeats.includes(number);
-
-  return `
-   <button type="button"
-    class="seat ${isTaken?"taken":""} ${isSelected?"selected":""}"
-    ${isTaken?"disabled":""}
-    onclick="toggleSeat(${number})">${number}</button>
+async function chooseTrip(index) {
+  selectedSchedule = currentSchedules[index];
+  selectedSeats = [];
+  unavailableSeats = [];
+  $("seatSection").classList.remove("hidden");
+  $("passengerSection").classList.add("hidden");
+  $("selectedTripInfo").innerHTML = `
+    <strong>${escapeHtml(selectedSchedule.routes?.origin)} → ${escapeHtml(selectedSchedule.routes?.destination)}</strong>
+    <p class="note">${escapeHtml(selectedSchedule.departure_date)} at ${escapeHtml(displayTime(selectedSchedule.departure_time))} · ${money(selectedSchedule.fare_kes)} per seat</p>
   `;
- }).join("");
+  $("seatGrid").innerHTML = "Loading seats...";
+  $("seatSection").scrollIntoView({behavior:"smooth"});
 
- updateSeatSummary();
-}
+  const {data,error} = await db.rpc("get_available_seats",{
+    p_schedule_id:selectedSchedule.id
+  });
 
-function toggleSeat(number){
- if(selectedSeats.includes(number)){
-  selectedSeats=selectedSeats.filter(seat=>seat!==number);
- }else{
-  if(selectedSeats.length>=passengerCount){
-   alert("You have already selected the required number of seats.");
-   return;
+  if (error) {
+    $("seatGrid").textContent = "Could not load seats: " + error.message;
+    return;
   }
-  if(bookedSeats().includes(number)){
-   alert("This seat is already marked as booked in this browser.");
-   return;
+
+  const available = new Set((data || []).map(item => Number(item.seat_number)));
+  unavailableSeats = [];
+  for(let n=1;n<=49;n++) {
+    if(!available.has(n)) unavailableSeats.push(n);
   }
-  selectedSeats.push(number);
- }
- renderSeats();
+  renderSeats(available);
 }
 
-function updateSeatSummary(){
- if(!selectedTrip)return;
+function renderSeats(available) {
+  $("seatGrid").innerHTML = "";
+  for(let n=1;n<=49;n++) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = n;
+    button.className = "seat";
+    button.setAttribute("aria-label","Seat " + n);
 
- const total=selectedSeats.length*Number(selectedTrip.fare);
+    if (!available.has(n)) {
+      button.classList.add("taken");
+      button.disabled = true;
+      button.title = "Unavailable";
+    } else if (selectedSeats.includes(n)) {
+      button.classList.add("selected");
+    }
 
- $("seatSummary").innerHTML=`
-  <strong>Route:</strong> ${safe(selectedTrip.from)} – ${safe(selectedTrip.to)}<br>
-  <strong>Date:</strong> ${safe(selectedTrip.date)}<br>
-  <strong>Departure:</strong> ${safe(selectedTrip.time)}<br>
-  <strong>Seats:</strong> ${selectedSeats.length?selectedSeats.join(", "):"None selected"}<br>
-  <strong>Passengers:</strong> ${passengerCount}<br>
-  <strong>Total fare:</strong> KSh ${total.toLocaleString()}
- `;
+    button.addEventListener("click",() => toggleSeat(n,available));
+    $("seatGrid").appendChild(button);
+  }
+  updateSeatSummary();
 }
 
-$("passengerForm").addEventListener("submit",function(event){
- event.preventDefault();
+function toggleSeat(number,available) {
+  if(selectedSeats.includes(number)) {
+    selectedSeats = selectedSeats.filter(n => n !== number);
+  } else {
+    if(selectedSeats.length >= requiredPassengers) {
+      message("seatSummary","You selected the maximum number of passengers.","error");
+      return;
+    }
+    selectedSeats.push(number);
+  }
+  selectedSeats.sort((a,b)=>a-b);
+  renderSeats(available);
+}
 
- if(selectedSeats.length!==passengerCount){
-  alert("Please select exactly "+passengerCount+" seats.");
-  return;
- }
+function updateSeatSummary() {
+  $("seatSummary").textContent =
+    "Selected seats: " + (selectedSeats.length ? selectedSeats.join(", ") : "None") +
+    " · " + selectedSeats.length + " of " + requiredPassengers +
+    " passenger(s) selected.";
+  $("continueBooking").disabled = selectedSeats.length !== requiredPassengers;
+}
 
- $("paymentSummary").innerHTML=`
-  <strong>Journey:</strong> ${safe(selectedTrip.from)} – ${safe(selectedTrip.to)}<br>
-  <strong>Travel date:</strong> ${safe(selectedTrip.date)}<br>
-  <strong>Departure:</strong> ${safe(selectedTrip.time)}<br>
-  <strong>Selected seats:</strong> ${selectedSeats.join(", ")}<br>
-  <strong>Passenger:</strong> ${safe($("passengerName").value)}<br>
-  <strong>Total:</strong> KSh ${(selectedSeats.length*Number(selectedTrip.fare)).toLocaleString()}
- `;
-
- $("paymentArea").classList.remove("hidden");
- $("paymentArea").scrollIntoView({behavior:"smooth"});
+$("continueBooking").addEventListener("click",() => {
+  $("passengerSection").classList.remove("hidden");
+  $("fareSummary").textContent =
+    selectedSeats.length + " seat(s) × " + money(selectedSchedule.fare_kes) +
+    " = " + money(selectedSeats.length * Number(selectedSchedule.fare_kes));
+  $("passengerSection").scrollIntoView({behavior:"smooth"});
 });
 
-function createDemoBooking(){
- if(!selectedTrip||selectedSeats.length!==passengerCount)return;
+$("passengerForm").addEventListener("submit",async event => {
+  event.preventDefault();
+  if(!selectedSchedule || selectedSeats.length !== requiredPassengers) return;
 
- const bookings=read("ga_bookings");
- const alreadyTaken=bookings
-  .filter(booking=>booking.tripId===selectedTrip.id)
-  .flatMap(booking=>booking.seats);
+  const name = $("passengerName").value.trim();
+  const phone = $("passengerPhone").value.trim();
+  const email = $("passengerEmail").value.trim();
 
- if(selectedSeats.some(seat=>alreadyTaken.includes(seat))){
-  alert("One of your selected seats has already been marked as booked. Please select again.");
-  renderSeats();
-  return;
- }
+  if(!name || !phone) {
+    message("bookingResult","Enter the passenger name and phone number.","error");
+    return;
+  }
 
- const booking={
-  ticket:makeId(),
-  tripId:selectedTrip.id,
-  name:$("passengerName").value.trim(),
-  phone:$("passengerPhone").value.trim(),
-  email:$("passengerEmail").value.trim(),
-  route:selectedTrip.from+" – "+selectedTrip.to,
-  date:selectedTrip.date,
-  time:selectedTrip.time,
-  bus:selectedTrip.bus,
-  seats:[...selectedSeats],
-  total:selectedSeats.length*Number(selectedTrip.fare),
-  status:"UNPAID DEMO"
- };
+  const submitButton = $("passengerForm").querySelector("button[type=submit]");
+  submitButton.disabled = true;
+  submitButton.textContent = "RESERVING...";
 
- bookings.push(booking);
- save("ga_bookings",bookings);
+  try {
+    // The database function checks seat availability and creates
+    // the booking and temporary seat holds together.
+    const {data,error} = await db.rpc("create_bus_booking",{
+      p_schedule_id:selectedSchedule.id,
+      p_seat_numbers:selectedSeats,
+      p_passenger_name:name,
+      p_passenger_phone:phone,
+      p_passenger_email:email || null
+    });
 
- $("ticketOutput").innerHTML=`
-  <div class="ticket">
-   <h2>THE GAUDIAN ANGEL</h2>
-   <p><strong>DEMONSTRATION BOOKING — NOT VALID FOR TRAVEL</strong></p>
-   <hr>
-   <p><strong>Reference:</strong> ${safe(booking.ticket)}</p>
-   <p><strong>Passenger:</strong> ${safe(booking.name)}</p>
-   <p><strong>Phone:</strong> ${safe(booking.phone)}</p>
-   <p><strong>Route:</strong> ${safe(booking.route)}</p>
-   <p><strong>Date:</strong> ${safe(booking.date)}</p>
-   <p><strong>Departure:</strong> ${safe(booking.time)}</p>
-   <p><strong>Bus:</strong> ${safe(booking.bus)}</p>
-   <p><strong>Seats:</strong> ${booking.seats.join(", ")}</p>
-   <p><strong>Total:</strong> KSh ${booking.total.toLocaleString()}</p>
-   <p><strong>Payment status:</strong> NOT PAID</p>
-   <hr>
-   <p>TRAVEL WITH CONFIDENCE</p>
-  </div>
- `;
+    if(error) throw error;
 
- $("ticketSection").classList.remove("hidden");
- $("ticketSection").scrollIntoView({behavior:"smooth"});
- renderSeats();
- renderAdmin();
-}
+    const result = Array.isArray(data) ? data[0] : data;
+    if(!result || !result.booking_reference) {
+      throw new Error("The database did not return a booking reference. Please check your booking status before trying again.");
+    }
 
-$("scheduleForm").addEventListener("submit",function(event){
- event.preventDefault();
+    const expiry = result.expires_at
+      ? new Date(result.expires_at).toLocaleString()
+      : "15 minutes after reservation";
 
- const from=$("adminFrom").value;
- const to=$("adminTo").value;
-
- if(!ROUTES.some(route=>route[0]===from&&route[1]===to)){
-  alert("This is not one of the approved routes.");
-  return;
- }
-
- const fare=Number($("adminFare").value);
- if(!Number.isFinite(fare)||fare<=0){
-  alert("Please enter a valid fare.");
-  return;
- }
-
- const trips=read("ga_trips");
-
- trips.push({
-  id:makeId(),
-  from,
-  to,
-  date:$("adminDate").value,
-  time:$("adminTime").value,
-  fare,
-  bus:$("adminBus").value.trim()
- });
-
- save("ga_trips",trips);
- $("scheduleForm").reset();
- renderAdmin();
- alert("Departure saved in this browser's demonstration data.");
+    $("bookingResult").innerHTML = `
+      <div class="card">
+        <h3 style="color:var(--green)">Reservation created</h3>
+        <p><b>Booking reference:</b> ${escapeHtml(result.booking_reference)}</p>
+        <p><b>Passenger:</b> ${escapeHtml(name)}</p>
+        <p><b>Seats:</b> ${selectedSeats.join(", ")}</p>
+        <p><b>Total:</b> ${money(selectedSeats.length * Number(selectedSchedule.fare_kes))}</p>
+        <p><b>Reservation expiry:</b> ${escapeHtml(expiry)}</p>
+        <div class="status error">
+          PAYMENT NOT YET CONNECTED. This is an unpaid reservation, not a valid travel ticket. Complete payment through the company's official payment process once activated.
+        </div>
+      </div>
+    `;
+    $("bookingResult").scrollIntoView({behavior:"smooth"});
+    $("passengerForm").reset();
+    $("seatSection").classList.add("hidden");
+    $("passengerSection").classList.add("hidden");
+  } catch(error) {
+    message("bookingResult","Reservation failed: " + error.message + ". Refresh seat availability before trying again.","error");
+    try {
+      const {data} = await db.rpc("get_available_seats",{
+        p_schedule_id:selectedSchedule.id
+      });
+      const available = new Set((data || []).map(item=>Number(item.seat_number)));
+      unavailableSeats = [];
+      for(let n=1;n<=49;n++) if(!available.has(n)) unavailableSeats.push(n);
+      selectedSeats = selectedSeats.filter(n=>available.has(n));
+      renderSeats(available);
+    } catch(refreshError) {
+      console.error(refreshError);
+    }
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "RESERVE SEATS";
+  }
 });
 
-function deleteTrip(id){
- if(!confirm("Delete this departure?"))return;
+// ADMIN AUTHENTICATION
+async function checkAdmin() {
+  const {data:{user}} = await db.auth.getUser();
+  currentUser = user || null;
+  isAdministrator = false;
 
- save("ga_trips",read("ga_trips").filter(trip=>trip.id!==id));
- renderAdmin();
+  if(!currentUser) {
+    $("adminLogin").classList.remove("hidden");
+    $("adminDashboard").classList.add("hidden");
+    return;
+  }
+
+  const {data:profile,error} = await db
+    .from("profiles")
+    .select("role")
+    .eq("user_id",currentUser.id)
+    .maybeSingle();
+
+  if(error) {
+    message("loginMessage","Could not verify administrator role: " + error.message,"error");
+    return;
+  }
+
+  if(profile?.role !== "admin") {
+    $("adminLogin").classList.remove("hidden");
+    $("adminDashboard").classList.add("hidden");
+    message("loginMessage","This account is not an administrator.","error");
+    return;
+  }
+
+  isAdministrator = true;
+  $("adminLogin").classList.add("hidden");
+  $("adminDashboard").classList.remove("hidden");
+  $("adminIdentity").textContent = currentUser.email;
+  await loadAdminData();
 }
 
-function renderAdmin(){
- const trips=read("ga_trips");
- const bookings=read("ga_bookings");
+$("loginForm").addEventListener("submit",async event => {
+  event.preventDefault();
+  message("loginMessage","Signing in...");
+  const email = $("adminEmail").value.trim();
+  const password = $("adminPassword").value;
 
- $("adminSchedules").innerHTML=trips.map(trip=>`
-  <tr>
-   <td>${safe(trip.from)} – ${safe(trip.to)}</td>
-   <td>${safe(trip.date)}</td>
-   <td>${safe(trip.time)}</td>
-   <td>KSh ${Number(trip.fare).toLocaleString()}</td>
-   <td>${safe(trip.bus)}</td>
-   <td><button class="btn btn-red" onclick="deleteTrip('${trip.id}')">DELETE</button></td>
-  </tr>
- `).join("")||"<tr><td colspan='6'>No departures have been added.</td></tr>";
+  const {error} = await db.auth.signInWithPassword({email,password});
+  if(error) {
+    message("loginMessage","Sign-in failed: " + error.message,"error");
+    return;
+  }
+  await checkAdmin();
+});
 
- $("adminBookings").innerHTML=bookings.map(booking=>`
-  <tr>
-   <td>${safe(booking.ticket)}</td>
-   <td>${safe(booking.name)}</td>
-   <td>${safe(booking.route)}</td>
-   <td>${booking.seats.join(", ")}</td>
-   <td>${safe(booking.status)}</td>
-  </tr>
- `).join("")||"<tr><td colspan='5'>No demonstration bookings yet.</td></tr>";
+$("logoutButton").addEventListener("click",async() => {
+  await db.auth.signOut();
+  currentUser = null;
+  isAdministrator = false;
+  $("adminLogin").classList.remove("hidden");
+  $("adminDashboard").classList.add("hidden");
+  message("loginMessage","You have signed out.","success");
+});
+
+async function loadAdminData() {
+  if(!isAdministrator) return;
+  await Promise.all([loadBuses(),loadAdminSchedules()]);
 }
 
-function openAdmin(){
- $("admin").classList.remove("hidden");
- renderAdmin();
- setTimeout(()=>$("admin").scrollIntoView({behavior:"smooth"}),100);
+async function loadBuses() {
+  const {data,error} = await db
+    .from("buses")
+    .select("id,bus_name,registration_number,seat_capacity,is_active")
+    .order("bus_name");
+
+  if(error) {
+    message("adminMessage","Could not load buses: " + error.message,"error");
+    return;
+  }
+  buses = data || [];
+
+  $("scheduleBus").innerHTML = '<option value="">Select bus</option>';
+  buses.filter(bus=>bus.is_active).forEach(bus=>{
+    const option = document.createElement("option");
+    option.value = bus.id;
+    option.textContent = bus.bus_name + " (" + bus.registration_number + ")";
+    $("scheduleBus").appendChild(option);
+  });
+
+  $("adminBuses").innerHTML = buses.length ? `
+    <table>
+      <thead><tr><th>Bus</th><th>Registration</th><th>Seats</th><th>Status</th></tr></thead>
+      <tbody>${buses.map(bus=>`
+        <tr>
+          <td>${escapeHtml(bus.bus_name)}</td>
+          <td>${escapeHtml(bus.registration_number)}</td>
+          <td>${escapeHtml(bus.seat_capacity)}</td>
+          <td>${bus.is_active ? "Active" : "Inactive"}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>` : '<p class="note">No buses added yet. Add your first bus above.</p>';
 }
 
-function clearDemoData(){
- if(!confirm("Delete all demonstration schedules and bookings in this browser?"))return;
+$("busForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  if(!isAdministrator) return;
+  const name = $("busName").value.trim();
+  const registration = $("busRegistration").value.trim();
 
- localStorage.removeItem("ga_trips");
- localStorage.removeItem("ga_bookings");
- renderAdmin();
- alert("Demonstration data cleared.");
+  const {error} = await db.from("buses").insert({
+    bus_name:name,
+    registration_number:registration,
+    seat_capacity:49,
+    is_active:true
+  });
+
+  if(error) {
+    message("adminMessage","Could not add bus: " + error.message,"error");
+    return;
+  }
+
+  $("busForm").reset();
+  message("adminMessage","Bus added successfully.","success");
+  await loadBuses();
+});
+
+$("scheduleForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  if(!isAdministrator) return;
+
+  const routeId = $("scheduleRoute").value;
+  const busId = $("scheduleBus").value;
+  const date = $("scheduleDate").value;
+  const time = $("scheduleTime").value;
+  const period = $("schedulePeriod").value;
+  const fare = Number($("scheduleFare").value);
+
+  if(!routeId || !busId || !date || !time || !fare || fare <= 0) {
+    message("adminMessage","Complete all schedule fields and enter a valid fare.","error");
+    return;
+  }
+
+  const {error} = await db.from("schedules").insert({
+    route_id:routeId,
+    bus_id:busId,
+    departure_date:date,
+    departure_time:time,
+    departure_period:period,
+    fare_kes:fare,
+    status:"scheduled"
+  });
+
+  if(error) {
+    message("adminMessage","Could not save schedule: " + error.message,"error");
+    return;
+  }
+
+  $("scheduleForm").reset();
+  $("scheduleDate").value = todayString;
+  message("adminMessage","Departure schedule saved successfully.","success");
+  await loadAdminSchedules();
+});
+
+async function loadAdminSchedules() {
+  if(!isAdministrator) return;
+  const {data,error} = await db
+    .from("schedules")
+    .select(`
+      id,departure_date,departure_time,departure_period,fare_kes,status,
+      routes(origin,destination),
+      buses(bus_name,registration_number)
+    `)
+    .order("departure_date",{ascending:true})
+    .order("departure_time",{ascending:true})
+    .limit(100);
+
+  if(error) {
+    $("adminSchedules").textContent = "Could not load schedules: " + error.message;
+    return;
+  }
+
+  $("adminSchedules").innerHTML = data?.length ? `
+    <table>
+      <thead><tr><th>Date</th><th>Route</th><th>Time</th><th>Bus</th><th>Fare</th><th>Status</th></tr></thead>
+      <tbody>${data.map(item=>`
+        <tr>
+          <td>${escapeHtml(item.departure_date)}</td>
+          <td>${escapeHtml(item.routes?.origin)} – ${escapeHtml(item.routes?.destination)}</td>
+          <td>${escapeHtml(displayTime(item.departure_time))} (${escapeHtml(item.departure_period)})</td>
+          <td>${escapeHtml(item.buses?.bus_name || "")}</td>
+          <td>${money(item.fare_kes)}</td>
+          <td>${escapeHtml(item.status)}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>` : '<p class="note">No schedules added yet. Add departures using the form above.</p>';
 }
 
-renderRoutes();
+// Restore an existing signed-in session and check admin role.
+db.auth.onAuthStateChange(() => {
+  setTimeout(() => checkAdmin().catch(console.error),0);
+});
+
+async function initialize() {
+  try {
+    await loadRoutes();
+    await checkAdmin();
+  } catch(error) {
+    console.error(error);
+    message("searchMessage","Website connection error: " + error.message,"error");
+  }
+}
+initialize();
 </script>
-
 </body>
 </html>
